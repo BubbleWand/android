@@ -1,21 +1,52 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+// custom views
+import Welcome from './views/welcome/welcome';
+import MyApp from './views/myApp/index';
+
+const Stack = createStackNavigator();
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggedIn: false,
+    }
+    this.logIn = this.logIn.bind(this)
+  }
+
+  logIn(loggedIn) {
+    console.log('here')
+    this.setState({ loggedIn })
+  }
+  render() {
+    const { loggedIn } = this.state
+    const logIn = this.logIn;
+    return (
+      <NavigationContainer>
+          <Stack.Navigator mode="modal" headerMode="none" >
+            {loggedIn === false ? 
+            <Stack.Screen name="Welcome" component={Welcome}  options={{ headerShown: false }} initialParams={{
+              logIn: logIn,
+            }}/>
+            :
+            <Stack.Screen name="MyApp" component={MyApp} />
+            }
+          </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'blue',
+    alignItems:'center'
   },
 });
