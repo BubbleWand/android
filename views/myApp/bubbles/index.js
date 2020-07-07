@@ -102,30 +102,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 10,
     paddingRight: 10,
-    borderColor: 'red',
-    borderWidth: 2,
   },
   headerText: {
     fontSize: 25,
     width: '75%',
-    borderColor: 'black',
-    borderWidth: 2,
     color: 'white',
     textAlign: 'center',
     // fontFamily: 'Helvetica',
-  },
-  icon: {
-    borderColor: 'red',
-    borderWidth: 2,
   },
   search: {
     zIndex: 1,
     height: 40,
     width: '100%',
     textAlign: 'center',
-    borderColor: 'red',
-    borderWidth: 2,
     padding: 0,
     fontSize: 20,
+    borderWidth: 2,
+    borderColor: 'grey',
   }
 })

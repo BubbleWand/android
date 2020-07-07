@@ -67,8 +67,8 @@ export default function MyApp() {
       })}
       tabBarOptions={{
         // activeTintColor: 'blue',
-        activeBackgroundColor: 'black',
-        inactiveBackgroundColor: 'black',
+        activeBackgroundColor: 'white',
+        inactiveBackgroundColor: 'white',
         showLabel: false,
       }}
       mode="modal"
