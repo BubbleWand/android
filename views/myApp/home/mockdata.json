@@ -1,0 +1,68 @@
+{
+  "posts": [
+    {
+      "author": {
+        "displayName": "Ike Holzmann",
+        "username": "ikejs"
+      },
+      "files": [
+        "https://via.placeholder.com/150/0000FF/808080?Text=first%20pic",
+        "https://via.placeholder.com/150/0000FF/808080?Text=second%20pic",
+        "https://via.placeholder.com/150/0000FF/808080?Text=third%20pic"
+      ],
+      "createdAt": "2020-07-04T16:00:00Z",
+      "comments": [
+        {
+          "author": {
+            "displayName": "Billy Joe",
+            "username": "billyjoe123"
+          },
+          "createdAt": "2020-07-04T16:00:00Z",
+          "content": "wow. this is an amazing post."
+        }
+      ],
+      "likes": [
+        {
+          "displayName": "Shaash",
+          "username": "shaash"
+        },
+        {
+          "displayName": "Ike Holzmann",
+          "username": "ikejs"
+        }
+      ]
+    },
+    {
+      "author": {
+        "displayName": "Ike Holzmann",
+        "username": "ikejs"
+      },
+      "files": [
+        "https://via.placeholder.com/150/0000FF/808080?Text=first%20pic",
+        "https://via.placeholder.com/150/0000FF/808080?Text=second%20pic",
+        "https://via.placeholder.com/150/0000FF/808080?Text=third%20pic"
+      ],
+      "createdAt": "2020-07-04T16:00:00Z",
+      "comments": [
+        {
+          "author": {
+            "displayName": "Billy Joe",
+            "username": "billyjoe123"
+          },
+          "createdAt": "2020-07-04T16:00:00Z",
+          "content": "wow. this is an amazing post."
+        }
+      ],
+      "likes": [
+        {
+          "displayName": "Shaash",
+          "username": "shaash"
+        },
+        {
+          "displayName": "Ike Holzmann",
+          "username": "ikejs"
+        }
+      ]
+    }
+  ]
+}
