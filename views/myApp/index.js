@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, } from 'react-native';
+import { Text, View, Image} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
@@ -11,6 +11,20 @@ import Profile from './profile/index';
 
 const Tabs = createBottomTabNavigator();
 
+// Icons
+import {
+  BubbleActive,
+  BubbleInactive,
+  HomeActive,
+  HomeInactive,
+  MapActive,
+  MapInactive,
+  PhotoActive,
+  PhotoInactive,
+  ProfileActive,
+  ProfileInactive
+} from '../../assets/tab-bar/index';
+
 function dummy() {
   return(
     <View>
@@ -21,10 +35,41 @@ function dummy() {
 export default function MyApp() {
   return (
     <Tabs.Navigator 
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          if (route.name === "Home") {
+            return focused ? 
+            <HomeActive height={size} width={size} /> 
+            :
+            <HomeInactive height={size} width={size} />
+          } else if(route.name === "Bubbles"){
+            return focused ? 
+            <BubbleActive height={size} width={size} /> 
+            :
+            <BubbleInactive height={size} width={size} />
+          } else if(route.name === "Add"){
+            return focused ? 
+            <PhotoActive height={size} width={size} /> 
+            :
+            <PhotoInactive height={size} width={size} />
+          } else if(route.name === "Map"){
+            return focused ? 
+            <MapActive height={size} width={size} /> 
+            :
+            <MapInactive height={size} width={size} />
+          } else if(route.name === "Profile"){
+            return focused ? 
+            <ProfileActive height={size} width={size} /> 
+            :
+            <ProfileInactive height={size} width={size} />
+          }
+        }
+      })}
       tabBarOptions={{
-        activeTintColor: 'blue',
+        // activeTintColor: 'blue',
         activeBackgroundColor: 'black',
         inactiveBackgroundColor: 'black',
+        showLabel: false,
       }}
       mode="modal"
 

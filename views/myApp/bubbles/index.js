@@ -36,13 +36,14 @@ export default class Bubbles extends Component {
       data: [],
       raw: RAW,
       showSearch: false,
+      tri: {},
     }
   }
 
   updateData(search){
     const { raw } = this.state;
     const tri = new InnerTree(raw.map((item) => item.name));
-    tri.complete('b')
+    console.log(tri.complete(''))
     // const data = raw.map((bubble, index) => {
 
     // })

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+
+import HomeInactive from '../../../assets/tab-bar/home-active.svg'
 
 import Constants from 'expo-constants';
 const statusBarHeight = Constants.statusBarHeight
@@ -12,6 +14,7 @@ export default class Add extends Component {
   render() {
     return(
       <View style={styles.view}>
+        <HomeInactive width={120} height={120} />
         <Text>ADD</Text>
       </View>
     )
