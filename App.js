@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
 });
+
+// Franklin was here
