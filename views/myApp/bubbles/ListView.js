@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 import Constants from 'expo-constants';
 const statusBarHeight = Constants.statusBarHeight
-
 import InnerTree from '../../../utils/Tree';
+import styles from '../../../styles';
 
 const RAW = [
   {
@@ -54,7 +53,7 @@ export default class ListView extends Component {
     return(
       <View style={styles.view}>
         <View style={styles.header}>
-          <Icon style={styles.icon} name="search" size={30} color="white" onPress={() => {
+          <Icon style={styles.icon} name="search" size={24} color="white" onPress={() => {
             this.setState(prevState => ({
               showSearch: !prevState.showSearch
             }));
@@ -83,41 +82,3 @@ export default class ListView extends Component {
     )
   }
 }
-
-
-
-const styles = StyleSheet.create({
-  view: {
-    paddingTop: statusBarHeight,
-    flex: 1,
-    alignItems: 'center'
-  },
-  header: {
-    width: "100%",
-    maxHeight: '9%',
-    backgroundColor: '#6654B4',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  headerText: {
-    fontSize: 25,
-    width: '75%',
-    color: 'white',
-    textAlign: 'center',
-    // fontFamily: 'Helvetica',
-  },
-  search: {
-    zIndex: 1,
-    height: 40,
-    width: '100%',
-    textAlign: 'center',
-    padding: 0,
-    fontSize: 20,
-    borderWidth: 2,
-    borderColor: 'grey',
-  }
-})
