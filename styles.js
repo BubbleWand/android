@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey'
+  },
+  postView: {
+    backgroundColor: 'red',
+    height: '100%'
   }
 });
 

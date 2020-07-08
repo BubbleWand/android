@@ -9,7 +9,7 @@ export default function Home({ navigation, route }) {
   return (
     <View style={styles.view}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Bubbles</Text>
+        <Text style={styles.headerText}>logo</Text>
       </View>
       <ScrollView>
         {
