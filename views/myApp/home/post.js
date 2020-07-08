@@ -4,7 +4,7 @@ import styles from '../../../styles';
 
 export default function Post({ author, likes, comments }) {
   return (
-    <View style={styles.view}>
+    <View style={styles.post}>
       <Text>{author.displayName}</Text>
     </View>
   )

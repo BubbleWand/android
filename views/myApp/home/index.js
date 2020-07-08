@@ -1,23 +1,27 @@
 import React from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Image, View, ScrollView } from 'react-native';
 import Post from './post';
 import styles from '../../../styles';
+import Statusbar from '../statusbar';
 
 const data = require('./mockdata.json');
 
 export default function Home({ navigation, route }) {
   return (
-    <View style={styles.view}>
+    <View>
+      <Statusbar></Statusbar>
       <View style={styles.header}>
-        <Text style={styles.headerText}>logo</Text>
+        <Image style={styles.headerImage} source={require('../../../assets/logo.png')} />
       </View>
-      <ScrollView>
-        {
-          data.posts.map((post, i) => {
-            return (<Post {...post} />)
-          })
-        }
-      </ScrollView>
+      <View style={styles.view}>
+        <ScrollView>
+          {
+            data.posts.map((post, i) => {
+              return (<Post {...post} key={i} />)
+            })
+          }
+        </ScrollView>
+      </View>
     </View>
   );
 
