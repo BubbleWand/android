@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text, View, Image} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
@@ -25,13 +24,6 @@ import {
   ProfileInactive
 } from '../../assets/tab-bar/index';
 
-function dummy() {
-  return(
-    <View>
-      <Text>Hi</Text>
-    </View>
-  )
-}
 export default function MyApp() {
   return (
     <Tabs.Navigator 

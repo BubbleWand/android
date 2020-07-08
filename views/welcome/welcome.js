@@ -1,15 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, ScrollView, SafeAreaView, FlatList, Dimensions } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-
-
-import Login from './Login'
+import Login from './Login';
+import styles from '../../styles';
 
 const WelcomeStack = createStackNavigator();
 
-export default function Welcome( props ) {
-  const  {logIn} = props.route.params
+export default function Welcome(props) {
+  const  { logIn } = props.route.params
   return (
     <WelcomeStack.Navigator
       initialRouteName="Home"
@@ -75,11 +73,3 @@ function SignupScreen({ route,  navigation }) {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  welcome: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})

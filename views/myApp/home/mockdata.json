@@ -34,13 +34,13 @@
     },
     {
       "author": {
-        "displayName": "Ike Holzmann",
-        "username": "ikejs"
+        "displayName": "Shaash",
+        "username": "shaash"
       },
       "files": [
-        "https://via.placeholder.com/150/0000FF/808080?Text=first%20pic",
+        "https://via.placeholder.com/150/0000FF/808080?Text=third%20pic",
         "https://via.placeholder.com/150/0000FF/808080?Text=second%20pic",
-        "https://via.placeholder.com/150/0000FF/808080?Text=third%20pic"
+        "https://via.placeholder.com/150/0000FF/808080?Text=first%20pic"
       ],
       "createdAt": "2020-07-04T16:00:00Z",
       "comments": [
@@ -50,7 +50,7 @@
             "username": "billyjoe123"
           },
           "createdAt": "2020-07-04T16:00:00Z",
-          "content": "wow. this is an amazing post."
+          "content": "wow! this is ALSO an amazing post."
         }
       ],
       "likes": [

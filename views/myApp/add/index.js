@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-
+import { Text, View, Image } from 'react-native';
 import HomeInactive from '../../../assets/tab-bar/home-active.svg'
-
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+import styles from '../../../styles';
 
 export default class Add extends Component {
   constructor(props) {
@@ -20,12 +17,3 @@ export default class Add extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  view: {
-    paddingTop: statusBarHeight,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-});
