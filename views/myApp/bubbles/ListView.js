@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Keyboard } from 'react-native';
+import { Text, View, TextInput, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
 import InnerTree from '../../../utils/Tree';
+import Statusbar from '../statusbar';
 import styles from '../../../styles';
 
 const RAW = [
@@ -51,32 +50,35 @@ export default class ListView extends Component {
   render() {
     const { showSearch } = this.state;
     return(
-      <View style={styles.view}>
+      <View>
+        <Statusbar></Statusbar>
         <View style={styles.header}>
-          <Icon style={styles.icon} name="search" size={24} color="white" onPress={() => {
+          <Icon style={styles.icon} name="search" size={20} color="white" onPress={() => {
             this.setState(prevState => ({
               showSearch: !prevState.showSearch
             }));
           }} />
           <Text style={styles.headerText}>Bubbles</Text>
-          <Icon style={styles.icon} name="plus" size={26} color="white" onPress={() => {console.log('hi')}}/>
+          <Icon style={styles.icon} name="plus" size={20} color="white" onPress={() => {console.log('hi')}}/>
         </View>
-        {showSearch ?
-          <TextInput
-            style={styles.search}
-            placeholder="search"
-            onBlur={Keyboard.dismiss}
-            value={this.state.password}
-            onChangeText={(search) => {
-              this.setState({search})
-              this.updateData(search);
-            }}
-          />
-          :
-          <></>
-        }
-        <View style={styles.body}>
-          <Text>Container</Text>
+        <View style={styles.view}>
+          {showSearch ?
+            <TextInput
+              style={styles.search}
+              placeholder="search"
+              onBlur={Keyboard.dismiss}
+              value={this.state.password}
+              onChangeText={(search) => {
+                this.setState({search})
+                this.updateData(search);
+              }}
+            />
+            :
+            <></>
+          }
+          <View style={styles.body}>
+            <Text>Container</Text>
+          </View>
         </View>
       </View>
     )

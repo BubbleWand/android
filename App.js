@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -28,15 +27,15 @@ export default class App extends Component {
     const logIn = this.logIn;
     return (
       <NavigationContainer>
-          <Stack.Navigator mode="modal" headerMode="none" >
-            {loggedIn === false ? 
-            <Stack.Screen name="Welcome" component={Welcome}  options={{ headerShown: false }} initialParams={{
-              logIn: logIn,
-            }}/>
-            :
-            <Stack.Screen name="MyApp" component={MyApp} />
-            }
-          </Stack.Navigator>
+        <Stack.Navigator mode="modal" headerMode="none" >
+          {loggedIn === false ? 
+          <Stack.Screen name="Welcome" component={Welcome}  options={{ headerShown: false }} initialParams={{
+            logIn: logIn,
+          }}/>
+          :
+          <Stack.Screen name="MyApp" component={MyApp} />
+          }
+        </Stack.Navigator>
       </NavigationContainer>
     );
   }

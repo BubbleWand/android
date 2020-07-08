@@ -1,29 +1,43 @@
 import { StyleSheet } from "react-native";
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 
-const bubblePurple = "#6654B4";
+const bubbleColors = {
+  "purple": "#6654B5",
+  "darkPurple": "#4B53B5",
+  "blue": "#5AE0ED",
+  "darkBlue": "#004165"
+}
 
 const styles = StyleSheet.create({
+  statusBar: {
+    height: Constants.statusBarHeight + 10,
+    backgroundColor: bubbleColors.darkBlue
+  },
   view: {
-    paddingTop: Constants.statusBarHeight,
+    marginTop: Constants.statusBarHeight,
     flex: 1,
     alignItems: "center"
   },
   welcome: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   header: {
     width: "100%",
-    maxHeight: "9%",
-    backgroundColor: bubblePurple,
-    flex: 1,
+    height: 64,
+    backgroundColor: bubbleColors.purple,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
+    padding: 10,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    marginTop: -10
+  },
+  headerImage: {
+    width: 48,
+    height: 48
   },
   headerText: {
     fontSize: 25,
@@ -34,12 +48,15 @@ const styles = StyleSheet.create({
   search: {
     zIndex: 1,
     height: 40,
-    width: '100%',
-    textAlign: 'center',
+    width: "100%",
+    textAlign: "center",
     padding: 0,
     fontSize: 20,
     borderWidth: 2,
-    borderColor: 'grey'
+    borderColor: "grey"
+  },
+  post: {
+    width: "100%"
   }
 });
 

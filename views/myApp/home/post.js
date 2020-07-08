@@ -1,6 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
+import styles from '../../../styles';
 
 export default function Post({ author, likes, comments }) {
-  return <Text>{author.displayName}</Text>
+  return (
+    <View style={styles.post}>
+      <Text>{author.displayName}</Text>
+    </View>
+  )
 }
