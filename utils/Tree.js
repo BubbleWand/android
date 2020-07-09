@@ -90,7 +90,7 @@ class InnerTree {
     const i = starterNode[1];
     console.log('root', curr, i)
     if (curr === null ) {
-      return Object.keys(completions).slice(0, 5);
+      return completions;
     }
     if (curr.terminal === true) {
       completions.push(prefix.slice(0, i))
@@ -98,8 +98,7 @@ class InnerTree {
     for (const key in curr.children) {
       traverse(curr.getChild(key), prefix.slice(0, i), completions);
     }
-    const items = Object.keys(completions).sort((a, b) => completions[a] - completions[b]);
-    return items.reverse().slice(0, 5);
+    return completions
   }
 
 }

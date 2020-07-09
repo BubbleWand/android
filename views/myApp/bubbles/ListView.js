@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Constants from 'expo-constants';
 const statusBarHeight = Constants.statusBarHeight
 
 import InnerTree from '../../../utils/Tree';
+import { FlatList } from 'react-native-gesture-handler';
 
 const RAW = [
   {
@@ -15,13 +16,13 @@ const RAW = [
     points: 500,
   },
   {
-    name: 'bubble 2',
+    name: 'bob',
     _id: 'id2',
     photo: 'https://i.picsum.photos/id/204/200/300.jpg?hmac=XxKpmfmEwzuLIP4_ji37Ql6leTx-j6LTtl8wNK3JTYY',
     points: 24121,
   },
   {
-    name: 'bubble 3',
+    name: 'bat',
     _id: 'id3',
     photo: 'https://i.picsum.photos/id/386/200/300.jpg?hmac=gk-J08Ib-URM0-Sv_pgzVkWrFR5_B7R3dvHWKfy93FU',
     points: 123,
@@ -31,10 +32,14 @@ const RAW = [
 export default class ListView extends Component {
   constructor(props) {
     super(props)
+    const newRaw = {}
+    for (let item of RAW) {
+      newRaw[item.name] = item
+    }
     this.state = {
       search: "",
-      data: [],
-      raw: RAW,
+      data: RAW,
+      raw: newRaw,
       showSearch: false,
       tri: {},
     }
@@ -42,15 +47,23 @@ export default class ListView extends Component {
 
   updateData(search){
     const { raw } = this.state;
-    const tri = new InnerTree(raw.map((item) => item.name));
-    console.log(tri.complete(''))
-    // const data = raw.map((bubble, index) => {
-
-    // })
+    let data;
+    if (search === "") {
+      data = Object.values(raw)
+    } else {
+      search = search.toLowerCase();
+      const tri = new InnerTree(Object.keys(raw));
+      const s = tri.complete(search)
+      data = s.map((item, index) => {
+        return raw[item]
+      })
+    }
+    console.log("data",data)
+    this.setState({data})
   }
 
   render() {
-    const { showSearch } = this.state;
+    const { showSearch, data } = this.state;
     return(
       <View style={styles.view}>
         <View style={styles.header}>
@@ -76,8 +89,19 @@ export default class ListView extends Component {
           :
           <></>
         }
-        <View style={styles.body}>
-          <Text>Container</Text>
+        <View style={styles.container}>
+          <FlatList
+            style={styles.flatlist}
+            data={data}
+            renderItem={({ item, index }) => {
+              return (
+                <View style={styles.list}>
+                  <Text>{item.name}</Text>
+                </View>
+              )
+            }}
+            keyExtractor={item => item['_id']}
+            />
         </View>
       </View>
     )
@@ -119,5 +143,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderWidth: 2,
     borderColor: 'grey',
+  },
+  body: {
+    minHeight: '80%',
+    borderColor: 'black',
+    borderWidth: 2,
+    width: '100%'
+  },
+  container: {
+    width: '100%',
   }
 })

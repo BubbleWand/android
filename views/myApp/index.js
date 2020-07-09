@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 import Home from './home/index';
-import Bubbles from './bubbles/index';
+import Bubble from './bubbles/index';
 import Add from './add/index';
 import Map from './map/index';
 import Profile from './profile/index';
@@ -75,7 +75,7 @@ export default function MyApp() {
 
       >
       <Tabs.Screen name="Home" component={Home} />
-      <Tabs.Screen name="Bubbles" component={Bubbles} />
+      <Tabs.Screen name="Bubbles" component={Bubble} />
       <Tabs.Screen name="Add" component={Add} />
       <Tabs.Screen name="Map" component={Map} />
       <Tabs.Screen name="Profile" component={Profile} />
