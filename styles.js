@@ -55,8 +55,36 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "grey"
   },
-  post: {
+  posts: {
+    height: Constants.height,
     width: "100%"
+  },
+  post: {
+    maxHeight: 600
+  },
+  horizontalScroll: {
+    width: "100%",
+    height: "100%"
+  },
+  viewPager: {
+    flex: 1,
+    height: "100%"
+  },
+  postHeader: {
+    position: 'absolute',
+    zIndex: 1,
+    margin: 15
+  },
+  postHeaderUsername: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  postHeaderTime: {
+    color: "white"
+  },
+  postFile: {
+    width: "100%",
+    height: "100%"
   }
 });
 

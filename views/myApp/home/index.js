@@ -13,15 +13,13 @@ export default function Home({ navigation, route }) {
       <View style={styles.header}>
         <Image style={styles.headerImage} source={require('../../../assets/logo.png')} />
       </View>
-      <View style={styles.view}>
-        <ScrollView>
-          {
-            data.posts.map((post, i) => {
-              return (<Post {...post} key={i} />)
-            })
-          }
-        </ScrollView>
-      </View>
+      <ScrollView style={styles.posts} snapToAlignment='center'>
+        {
+          data.posts.map((post, i) => {
+            return (<Post {...post} key={i} />)
+          })
+        }
+      </ScrollView>
     </View>
   );
 
