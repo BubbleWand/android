@@ -5,9 +5,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const BubbleStack = createStackNavigator();
 
-import ListView from './ListView';
+import ListView from './listView';
 import NewBubble from './newBubble';
-import showBubble from '../../../components/bubble/index';
+import showBubble from './showBubble';
 
 export default function Bubble() {
   return(
