@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Constants from 'expo-constants';
@@ -90,32 +90,57 @@ const RAW =
     }
   }
 
-export default class showBubble extends Component {
+export default class ShowBubble extends Component {
   constructor(props) {
     super(props)
     this.state = {
       params: props.route.params,
       data: null,
+      isPostsActive: true,
+      isOwner: true,
+      displayData: null,
     }
     this.getData = this.getData.bind(this)
+    this.updateDisplayData = this.updateDisplayData.bind(this)
     this.getData()
   }
 
-  getData() {
+  async getData() {
+    this.updateDisplayData()
     this.state.data = RAW
   }
+
+  updateDisplayData() {
+    console.log('updating display data')
+  }
+
   render() {
-    const { data } =  this.state;
-    console.log(data.createdAt.getYear())
+    const { data, isPostsActive, isOwner } =  this.state;
+    const {type} = this.props.route.params;
+
     if (data === null) {
       return(
       <View style={styles.container}>
         <Text>Loading</Text>
       </View>)
     }
-    const {type} = this.props.route.params;
+
     return(
       <View style={styles.container}>
+        <View style={styles.navbar}>
+          <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
+            <View style={styles.back}>
+              <Icon name="arrow-left" size={25} color="white" />
+              <Text style={styles.backText}>Back</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <Icon name="cog" size={25} color="white" style={isOwner ? styles.setting : {display: "none"}} 
+            onPress={() =>{
+              this.props.navigation.navigate('Settings', {
+                id: data._id,
+              })
+            }} />
+        </View>
         <View style={styles.header}>
           <View style={styles.left}>
             <Image
@@ -148,6 +173,31 @@ export default class showBubble extends Component {
             </Text>
           </View>
         </View>
+        <View style={styles.menu}>
+          {isPostsActive ? 
+          <>
+            <TouchableWithoutFeedback onPress={() => this.setState({ isPostsActive: true })} >
+              <View style={styles.menuViewActive}>
+                <Text style={styles.menuTextActive} >Posts</Text>
+              </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.setState({ isPostsActive: false })} >
+              <Text style={styles.menuText} >Upcoming</Text>
+            </TouchableWithoutFeedback>
+          </>
+          :
+          <>
+            <TouchableWithoutFeedback onPress={() => this.setState({ isPostsActive: true })} >
+              <Text style={styles.menuText}>Posts</Text>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.setState({ isPostsActive: false })} >
+              <View style={styles.menuViewActive} >
+                <Text style={styles.menuTextActive} >Upcoming</Text>
+              </View>
+            </TouchableWithoutFeedback>
+          </>
+          }
+        </View>
       </View>
     )
   }
@@ -160,8 +210,31 @@ const styles = StyleSheet.create({
     minHeight: '100%',
     maxWidth: '100%',
   },
+  navbar: {
+    width: '100%',
+    maxHeight: 50,
+    flex: 1,
+    paddingLeft: 18,
+    paddingRight: 18,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#6654B4',
+  },
+  back: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    minWidth: 75,
+    maxWidth: 75,
+  },
+  backText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '300',
+  },
   header: {
-    maxHeight: 200,
+    maxHeight: 190,
     width: '100%',
     flex: 1,
     flexDirection: 'row',
@@ -239,4 +312,29 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '300',
   },
+  menu: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    maxHeight: 40,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  menuViewActive: {
+    borderBottomWidth: 3,
+    borderBottomColor: '#6654B4',
+  },
+  menuTextActive: {
+    maxHeight: 37,
+    minHeight: 37,
+    color: '#6654B4',
+    fontSize: 20,
+    fontWeight: '400',
+  },
+  menuText: {
+    maxHeight: 37,
+    minHeight: 37,
+    fontSize: 18,
+    fontWeight: '400',
+  }
 })

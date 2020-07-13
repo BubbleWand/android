@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import MapView from 'react-native-maps'
 
 import Constants from 'expo-constants';
 const statusBarHeight = Constants.statusBarHeight
@@ -12,7 +13,7 @@ export default class Map extends Component {
   render() {
     return(
       <View style={styles.view}>
-        <Text>MAP</Text>
+        <MapView style={styles.mapStyle} />
       </View>
     )
   }
@@ -25,4 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  }
 })

@@ -14,7 +14,7 @@ const RAW = [
     _id: 'id1',
     photo: 'https://i.picsum.photos/id/1028/200/200.jpg?hmac=thf3cKyzvjBi3Rnf8-hvYRl8MmEPFPIq1G8nJVvoT4I',
     points: 500,
-    tansaction: 'Franklin: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
+    transaction: 'Franklin: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
   },
   {
     name: 'bob',
@@ -116,13 +116,13 @@ export default class ListView extends Component {
     return(
       <View style={styles.view}>
         <View style={styles.header}>
-          <Icon style={styles.icon} name="search" size={30} color="white" onPress={() => {
+          <Icon style={styles.icon} name="search" size={25} color="white" onPress={() => {
             this.setState(prevState => ({
               showSearch: !prevState.showSearch
             }));
           }} />
           <Text style={styles.headerText}>Bubbles</Text>
-          <Icon style={styles.icon} name="plus" size={26} color="white" onPress={() => {console.log('hi')}}/>
+          <Icon style={styles.icon} name="plus" size={25} color="white" onPress={() => {console.log('hi')}}/>
         </View>
         {showSearch ?
           <TextInput
@@ -190,8 +190,8 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    minHeight: '9%',
-    maxHeight: '9%',
+    minHeight: 50,
+    maxHeight: 50,
     backgroundColor: '#6654B4',
     flex: 1,
     flexDirection: 'row',
@@ -214,8 +214,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 0,
     fontSize: 20,
-    borderWidth: 2,
-    borderColor: 'grey',
   },
   body: {
     minHeight: '80%',
@@ -244,8 +242,6 @@ const styles = StyleSheet.create({
     marginRight: 25,
   },
   right: {
-    borderWidth: 1,
-    borderColor: 'red',
     height: 90,
     minWidth: '70%',
     paddingTop: 6,
@@ -264,8 +260,6 @@ const styles = StyleSheet.create({
     maxHeight: '40%',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderColor: 'black',
-    borderWidth: 1,
   },
   bubbleName: {
     fontSize: 20,
@@ -273,8 +267,6 @@ const styles = StyleSheet.create({
     margin: 0,
     maxWidth: '70%',
     overflow: "hidden",
-    borderColor: 'green',
-    borderWidth: 1,
     marginRight: 10,
   },
   bubblePoints: {
