@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+const BubbleStack = createStackNavigator();
 
-export default class Profile extends Component {
-  constructor(props) {
-    super(props)
-  }
+import ShowBubble from '../bubbles/showBubble';
+import Settings from '../bubbles/settings';
 
-  render() {
-    return(
-      <View style={styles.view}>
-        <Text>Profile</Text>
-      </View>
-    )
-  }
+export default function Profile() {
+  return(
+    <BubbleStack.Navigator
+      initialRouteName="Profile"
+      mode="modal"
+      headerMode="none"
+      >
+      <BubbleStack.Screen name="Profile" component={ShowBubble} initialParams={{
+        type: 'profile',
+      }} />
+      <BubbleStack.Screen name="Settings" component={Settings} />
+    </BubbleStack.Navigator>
+  )
 }
-
-const styles = StyleSheet.create({
-  view: {
-    paddingTop: statusBarHeight,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-})

@@ -66,13 +66,11 @@ export default function MyApp() {
         }
       })}
       tabBarOptions={{
-        // activeTintColor: 'blue',
         activeBackgroundColor: 'white',
         inactiveBackgroundColor: 'white',
         showLabel: false,
       }}
       mode="modal"
-
       >
       <Tabs.Screen name="Home" component={Home} />
       <Tabs.Screen name="Bubbles" component={Bubble} />

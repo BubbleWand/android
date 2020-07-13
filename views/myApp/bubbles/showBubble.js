@@ -85,6 +85,7 @@ const RAW =
       }
     ],
     members: [1, 1, 1, 1, 1, 1, 1, 1, 1,2, 3],
+    friends: [1, 2, 3],
     location : {
       coordinates: [-122.406417, 37.785834]
     }
@@ -117,7 +118,7 @@ export default class ShowBubble extends Component {
   render() {
     const { data, isPostsActive, isOwner } =  this.state;
     const {type} = this.props.route.params;
-
+    
     if (data === null) {
       return(
       <View style={styles.container}>
@@ -127,9 +128,9 @@ export default class ShowBubble extends Component {
 
     return(
       <View style={styles.container}>
-        <View style={styles.navbar}>
+        <View style={type === 'profile' ? styles.profileNavbar : styles.navbar}>
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
-            <View style={styles.back}>
+            <View style={type === 'profile' ? styles.profileBack : styles.back}>
               <Icon name="arrow-left" size={25} color="white" />
               <Text style={styles.backText}>Back</Text>
             </View>
@@ -220,6 +221,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#6654B4',
+  },
+  profileNavbar: {
+    width: '100%',
+    maxHeight: 50,
+    flex: 1,
+    paddingLeft: 18,
+    paddingRight: 18,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: '#6654B4',
+  },
+  profileBack: {
+    display: 'none',
   },
   back: {
     flex: 1,

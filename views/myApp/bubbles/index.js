@@ -7,7 +7,7 @@ const BubbleStack = createStackNavigator();
 import ListView from './listView';
 import NewBubble from './newBubble';
 import ShowBubble from './showBubble';
-import Settings from './settings';
+import Settings from './settings'
 
 export default function Bubble() {
   return(
@@ -18,7 +18,9 @@ export default function Bubble() {
       >
       <BubbleStack.Screen name="Home" component={ListView} />
       <BubbleStack.Screen name="New" component={NewBubble} />
-      <BubbleStack.Screen name="Bubble" component={ShowBubble} />
+      <BubbleStack.Screen name="Bubble" component={ShowBubble} initialParams={{
+        type: 'bubble',
+      }} />
       <BubbleStack.Screen name="Settings" component={Settings} />
     </BubbleStack.Navigator>
   )

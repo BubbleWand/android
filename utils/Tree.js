@@ -88,7 +88,6 @@ class InnerTree {
     const starterNode = this.findNode(prefix);
     const curr = starterNode[0];
     const i = starterNode[1];
-    console.log('root', curr, i)
     if (curr === null ) {
       return completions;
     }

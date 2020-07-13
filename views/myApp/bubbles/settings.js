@@ -1,12 +1,62 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import Constants from 'expo-constants';
+const statusBarHeight = Constants.statusBarHeight
 
-export default function Settings() {
-  return(
-    <View>
-      <Text>Hi</Text>
-    </View>
-  )
+export default class Settings extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      id: props.route.params.id,
+    }
+  }
+  render() {
+    return(
+      <View style={styles.container}>
+        <View style={styles.navbar}>
+          <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
+            <View style={styles.back}>
+              <Icon name="arrow-left" size={25} color="white" />
+              <Text style={styles.backText}>Back</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+        <Text>{this.props.route.params.id}</Text>
+      </View>
+    )
+  }
+  
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: statusBarHeight,
+    minHeight: '100%',
+    maxWidth: '100%',
+  },
+  navbar: {
+    width: '100%',
+    maxHeight: 50,
+    flex: 1,
+    paddingLeft: 18,
+    paddingRight: 18,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#6654B4',
+  },
+  back: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    minWidth: 75,
+    maxWidth: 75,
+  },
+  backText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '300',
+  },
+})
