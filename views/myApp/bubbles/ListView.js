@@ -79,7 +79,10 @@ export default class ListView extends Component {
     super(props)
     const newRaw = {}
     for (let item of RAW) {
-      newRaw[item.name] = item
+      newRaw[item.name] === undefined ? 
+        newRaw[item.name] = new Array(item)
+        :
+        newRaw[item.name].push(item)
     }
     this.state = {
       search: "",
@@ -94,7 +97,9 @@ export default class ListView extends Component {
     const { raw } = this.state;
     let data;
     if (search === "") {
-      data = Object.values(raw)
+      for (let item of raw) {
+        data = [...data, ...item]
+      }
     } else {
       search = search.toLowerCase();
       const tri = new InnerTree(Object.keys(raw));
@@ -143,9 +148,9 @@ export default class ListView extends Component {
                 <TouchableOpacity style={styles.list} onPress={()=> {
                   this.props.navigation.navigate('Bubble', {
                     id: item._id,
+                    type: 'bubble',
                   })
                 }}>
-                  {/* <View style={styles.list}> */}
                     <Image
                       style={styles.image}
                       source={{
@@ -164,8 +169,6 @@ export default class ListView extends Component {
                           <Text>a</Text>
                         </TouchableOpacity>
                       </View>
-
-                  {/* </View> */}
                 </TouchableOpacity>
               )
             }}

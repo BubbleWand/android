@@ -1,9 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const BubbleStack = createStackNavigator();
+
 
 import ListView from './listView';
 import NewBubble from './newBubble';
