@@ -28,7 +28,7 @@ export default class Map extends Component {
 
 const styles = StyleSheet.create({
   view: {
-    paddingTop: statusBarHeight,
+    marginTop: statusBarHeight,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Keyboard, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Statusbar from '../statusbar';
+
+import Constants from 'expo-constants';
+const statusBarHeight = Constants.statusBarHeight
 
 import InnerTree from '../../../utils/Tree';
 import { FlatList } from 'react-native-gesture-handler';
@@ -114,7 +116,6 @@ export default class ListView extends Component {
     const { showSearch, data } = this.state;
     return(
       <View style={styles.view}>
-        <Statusbar />
         <View style={styles.header}>
           <Icon style={styles.icon} name="search" size={25} color="white" onPress={() => {
             this.setState(prevState => ({
@@ -188,6 +189,7 @@ const styles = StyleSheet.create({
     width: "100%",
     minHeight: 50,
     maxHeight: 50,
+    marginTop: statusBarHeight,
     backgroundColor: bubbleColors.purple,
     flex: 1,
     flexDirection: 'row',

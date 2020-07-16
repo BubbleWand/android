@@ -10,6 +10,7 @@ import {
 import Post from './post';
 import styles from './styles';
 
+
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const data = require('./mockdata.json');
@@ -31,7 +32,6 @@ export default function Home() {
 
   return (
     <View style={styles.view}>
-      <StatusBar hidden />
       <ScrollView 
         style={styles.posts} 
         decelerationRate={0}
