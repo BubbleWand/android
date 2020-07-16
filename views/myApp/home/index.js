@@ -1,34 +1,59 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
+import React from 'react';
+import { 
+  View, 
+  StyleSheet,
+  ScrollView, 
+  StatusBar, 
+  Dimensions, 
+  RefreshControl 
+} from 'react-native';
+import Post from './post';
+import styles from './styles';
 
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+const screenHeight = Math.round(Dimensions.get('window').height);
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
+const data = require('./mockdata.json');
 
-  render() {
-    return(
-      <View style={styles.view}>
-        <Text>HOME</Text>
-      </View>
-    )
-  }
+const wait = (timeout) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
 }
 
-// use flatlist or sectionlist: https://reactnative.dev/docs/sectionlist
+export default function Home() {
 
-// scrollview
-// snap to interval: https://reactnative.dev/docs/scrollview#snaptoalignment
+  const [refreshing, setRefreshing] = React.useState(false);
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
-const styles = StyleSheet.create({
-  view: {
-    paddingTop: statusBarHeight,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-})
+  return (
+    <View style={styles.view}>
+      <StatusBar hidden />
+      <ScrollView 
+        style={styles.posts} 
+        decelerationRate={0}
+        snapToInterval={screenHeight - 64}
+        snapToAlignment='center'
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={refreshing} 
+            onRefresh={onRefresh} 
+            title="Pull to refresh"
+            tintColor="#fff"
+            titleColor="#fff"
+          />
+        }
+      >
+        {
+          data.posts.map((post, i) => {
+            return (<Post {...post} key={i} />)
+          })
+        }
+      </ScrollView>
+    </View>
+  );
+}

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+import Statusbar from '../statusbar';
+import bubbleColors from '../../../utils/bubbleColors';
 
 const MONTHS = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -128,6 +127,7 @@ export default class ShowBubble extends Component {
 
     return(
       <View style={styles.container}>
+        <Statusbar />
         <View style={type === 'profile' ? styles.profileNavbar : styles.navbar}>
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
             <View style={type === 'profile' ? styles.profileBack : styles.back}>
@@ -161,11 +161,11 @@ export default class ShowBubble extends Component {
             } 
             <View style={styles.info}>
               <View style={styles.infoField}>
-                <Icon name="map-pin" size={15} color="#6654B4" />
+                <Icon name="map-pin" size={15} color={bubbleColors.purple} />
                 <Text style={styles.infoText}>San Francisco, CA</Text>
               </View>
               <View style={styles.infoField}>
-                <Icon name="calendar-day" size={15} color="#6654B4" />
+                <Icon name="calendar-day" size={15} color={bubbleColors.purple} />
                 <Text style={styles.infoText}>Bubbled {MONTHS[data.createdAt.getMonth()]}, {1900 + data.createdAt.getYear()}</Text>
               </View>
             </View>
@@ -207,7 +207,6 @@ export default class ShowBubble extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: statusBarHeight,
     minHeight: '100%',
     maxWidth: '100%',
   },
@@ -220,7 +219,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#6654B4',
+    backgroundColor: bubbleColors.purple,
   },
   profileNavbar: {
     width: '100%',
@@ -231,7 +230,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    backgroundColor: '#6654B4',
+    backgroundColor: bubbleColors.purple,
   },
   profileBack: {
     display: 'none',
@@ -277,7 +276,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   name: {
-    color: '#6654B4',
+    color: bubbleColors.purple,
     fontSize: 14,
     fontWeight: '700',
     margin: 3,
@@ -337,12 +336,12 @@ const styles = StyleSheet.create({
   },
   menuViewActive: {
     borderBottomWidth: 3,
-    borderBottomColor: '#6654B4',
+    borderBottomColor: bubbleColors.purple,
   },
   menuTextActive: {
     maxHeight: 37,
     minHeight: 37,
-    color: '#6654B4',
+    color: bubbleColors.purple,
     fontSize: 20,
     fontWeight: '400',
   },

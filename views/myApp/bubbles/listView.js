@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Keyboard, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+import Statusbar from '../statusbar';
 
 import InnerTree from '../../../utils/Tree';
 import { FlatList } from 'react-native-gesture-handler';
+import bubbleColors from '../../../utils/bubbleColors';
 
 const RAW = [
   {
@@ -115,6 +114,7 @@ export default class ListView extends Component {
     const { showSearch, data } = this.state;
     return(
       <View style={styles.view}>
+        <Statusbar />
         <View style={styles.header}>
           <Icon style={styles.icon} name="search" size={25} color="white" onPress={() => {
             this.setState(prevState => ({
@@ -127,9 +127,10 @@ export default class ListView extends Component {
         {showSearch ?
           <TextInput
             style={styles.search}
-            placeholder="search"
             onBlur={Keyboard.dismiss}
             value={this.state.password}
+            selectionColor={'white'}
+            autoFocus = {true}
             onChangeText={(search) => {
               this.setState({search})
               this.updateData(search);
@@ -183,16 +184,11 @@ export default class ListView extends Component {
 
 
 const styles = StyleSheet.create({
-  view: {
-    paddingTop: statusBarHeight,
-    flex: 1,
-    alignItems: 'center'
-  },
   header: {
     width: "100%",
     minHeight: 50,
     maxHeight: 50,
-    backgroundColor: '#6654B4',
+    backgroundColor: bubbleColors.purple,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -214,14 +210,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 0,
     fontSize: 20,
-  },
-  body: {
-    minHeight: '80%',
-    width: '100%'
+    backgroundColor: bubbleColors.darkPurple,
+    color: 'white',
   },
   container: {
-    width: '95%',
-    minHeight: '80%',
+    marginLeft: 10,
+    marginRight: 10,
+    minHeight: '100%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
@@ -230,16 +225,17 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     minHeight: 110,
     borderBottomWidth: 1,
+    borderBottomColor: 'darkgrey',
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
   },
   image: {
-    width: '22%',
-    height: 85,
+    width: 80,
+    height: 80,
     borderRadius: 50,
-    marginRight: 25,
+    marginRight: 10,
   },
   right: {
     height: 90,
