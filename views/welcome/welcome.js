@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
    fontWeight:'bold',
    marginLeft: 113,
    textAlign:"left",
-   color:'black',
+   color:'white',
  },
  welcomeLogo: {
    bottom:"9%",
