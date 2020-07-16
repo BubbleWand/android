@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
+import React from 'react';
+import { View, ScrollView, StatusBar, Dimensions } from 'react-native';
+import Post from './post';
+import styles from './styles';
 
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+const screenHeight = Math.round(Dimensions.get('window').height);
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
+const data = require('./mockdata.json');
 
-  render() {
-    return(
-      <View style={styles.view}>
-        <Text>HOME</Text>
-      </View>
-    )
-  }
+
+export default function Home() {
+  return (
+    <View style={styles.view}>
+      <StatusBar hidden />
+      <ScrollView 
+        style={styles.posts} 
+        decelerationRate={0}
+        snapToInterval={screenHeight - 64}
+        snapToAlignment='center'
+        showsVerticalScrollIndicator={false}
+      >
+        {
+          data.posts.map((post, i) => {
+            return (<Post {...post} key={i} />)
+          })
+        }
+      </ScrollView>
+    </View>
+  );
 }
-
-// use flatlist or sectionlist: https://reactnative.dev/docs/sectionlist
-
-// scrollview
-// snap to interval: https://reactnative.dev/docs/scrollview#snaptoalignment
-
-
-const styles = StyleSheet.create({
-  view: {
-    paddingTop: statusBarHeight,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-})

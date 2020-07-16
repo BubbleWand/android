@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import Constants from 'expo-constants';
-const statusBarHeight = Constants.statusBarHeight
+import Statusbar from '../statusbar';
+import bubbleColors from '../../../utils/bubbleColors';
 
 export default class Settings extends Component {
   constructor(props) {
@@ -15,6 +14,7 @@ export default class Settings extends Component {
   render() {
     return(
       <View style={styles.container}>
+        <Statusbar type="modal" />
         <View style={styles.navbar}>
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
             <View style={styles.back}>
@@ -32,7 +32,6 @@ export default class Settings extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: statusBarHeight,
     minHeight: '100%',
     maxWidth: '100%',
   },
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#6654B4',
+    backgroundColor: bubbleColors.purple,
   },
   back: {
     flex: 1,
