@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Text, View, Button, ScrollView, TextInput, StyleSheet, Keyboard, TouchableOpacity,TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import {  Text, View, Button, ScrollView, TextInput, StyleSheet, Keyboard, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { BubbleLogo } from '../../assets';
 
@@ -20,24 +20,24 @@ export default class Login extends Component {
   render() {
     const { logIn } = this.props.route.params
     return (
-      <View style={styles.view}>
-        <TouchableOpacity style={styles.backButton}
-        onPress={() => this.props.navigation.goBack()}>
-          <Icon name="arrow-left" size={30} color="#7D5FFF" />
-        </TouchableOpacity>
-        <BubbleLogo style={styles.loginLogo} height={"40%"} width={"40%"}></BubbleLogo>
-        <View style={styles.textInput}>
-          <Text style={styles.loginText}>Log in to Bubble.</Text>
 
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            placeholderTextColor="#84817a"
-            onBlur={Keyboard.dismiss}
-            value={this.state.username}
-            onChangeText={(username) => this.setState({username})}
-          />
-          <TextInput
+      
+          <View style={styles.view}>
+            <TouchableOpacity style={styles.backButton}
+            onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-left" size={28} color="#7D5FFF" />
+            </TouchableOpacity>
+            <BubbleLogo height={"45%"} width={"45%"} style={styles.logo}></BubbleLogo>
+            <Text style={styles.loginText}>Log in to Bubble.</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Username"
+              placeholderTextColor="#84817a"
+              onBlur={Keyboard.dismiss}
+              value={this.state.username}
+              onChangeText={(username) => this.setState({username})}
+            />
+            <TextInput
             style={styles.input}
             placeholder="Password"
             placeholderTextColor="#84817a"
@@ -47,14 +47,13 @@ export default class Login extends Component {
             onChangeText={(password) => this.setState({password})}
           />
           <TouchableOpacity style={styles.logInButton}
-          onPress={() => {
-            logIn()
-          }}>
+            onPress={() => {
+              logIn()
+            }}>
             <Text style={styles.logInText}
-          >Log In</Text>
+             >Log In</Text>
           </TouchableOpacity>
         </View>
-      </View>
     )
   }
 }
@@ -62,19 +61,24 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
   view: {
-    marginTop: statusBarHeight,
     backgroundColor: 'white',
+    marginTop: statusBarHeight,
+    height: Dimensions.get('window').height ,
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    minHeight: '100%'
+    flexDirection: 'column',
+  },  
+  backButton: {
+    width: '100%',
+    height: 60,
+    paddingLeft: 20,
+    marginTop: 25,
   },
   textInput: {
     width:'100%',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    bottom:390,
   },
   input: {
     fontSize: 15,
@@ -84,24 +88,19 @@ const styles = StyleSheet.create({
     borderBottomColor: '#84817a',
     color: 'black',
     paddingLeft: '2%',
-
-  },
-  loginLogo: {
-    position:"absolute",
-    top:10,
+    marginBottom: 10,
   },
   loginText: {
-    bottom:10,
     width: "100%",
     fontSize:23,
     fontWeight:'bold',
     marginLeft: 100,
     textAlign:"left",
     color:'black',
+    marginBottom: 10,
   },
   logInButton: {
-    position:'absolute',
-    bottom:-60,
+    marginTop: 20,
     justifyContent: "center",
     alignItems: "center",
     width: "75%",
@@ -116,8 +115,8 @@ const styles = StyleSheet.create({
     color:'white',
     fontSize:20,
   },
-  backButton: {
-    bottom: 350,
-    marginLeft: -330,
+  logo: {
+    maxHeight: '20%',
+    marginBottom: 70,
   }
 })
