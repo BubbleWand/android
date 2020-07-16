@@ -98,22 +98,23 @@ export default class ListView extends Component {
     const { raw } = this.state;
     let data;
     if (search === "") {
-      for (let item of raw) {
-        data = [...data, ...item]
-      }
+      console.log('in here')
+      data = RAW
     } else {
+      data = []
       search = search.toLowerCase();
       const tri = new InnerTree(Object.keys(raw));
       const s = tri.complete(search)
-      data = s.map((item, index) => {
-        return raw[item]
-      })
+      for (let item of s) {
+        data = data.concat(raw[item])
+      }
     }
     this.setState({data})
   }
 
   render() {
     const { showSearch, data } = this.state;
+    console.log('--------', data)
     return(
       <View style={styles.view}>
         <View style={styles.header}>
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: 10,
     marginRight: 10,
-    minHeight: '100%',
+    minHeight: '90%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
