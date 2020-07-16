@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Statusbar from '../statusbar';
 import bubbleColors from '../../../utils/bubbleColors';
 
 import Constants from 'expo-constants';
