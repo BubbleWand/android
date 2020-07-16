@@ -8,8 +8,7 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: bubbleColors.purple,
-    color: 'white'
+    backgroundColor: bubbleColors.purple
   },
   post: {
     height: screenHeight-64
