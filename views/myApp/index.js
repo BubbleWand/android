@@ -39,29 +39,29 @@ export default function MyApp() {
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === "Home") {
             return focused ? 
-            <HomeActive height={size} width={size} /> 
+            <HomeActive height={size*1.4} width={size*1.4} /> 
             :
-            <HomeInactive height={size} width={size} />
+            <HomeInactive height={size*1.4} width={size*1.4} />
           } else if(route.name === "Bubbles"){
             return focused ? 
-            <BubbleActive height={size} width={size} /> 
+            <BubbleActive height={size*1.4} width={size*1.4} /> 
             :
-            <BubbleInactive height={size} width={size} />
+            <BubbleInactive height={size*1.4} width={size*1.4} />
           } else if(route.name === "Add"){
             return focused ? 
-            <PhotoActive height={size} width={size} /> 
+            <PhotoActive height={size*1.4} width={size*1.4} /> 
             :
-            <PhotoInactive height={size} width={size} />
+            <PhotoInactive height={size*1.4} width={size*1.4} />
           } else if(route.name === "Map"){
             return focused ? 
-            <MapActive height={size} width={size} /> 
+            <MapActive height={size*1.4} width={size*1.4} /> 
             :
-            <MapInactive height={size} width={size} />
+            <MapInactive height={size*1.4} width={size*1.4} />
           } else if(route.name === "Profile"){
             return focused ? 
-            <ProfileActive height={size} width={size} /> 
+            <ProfileActive height={size*1.4} width={size*1.4} /> 
             :
-            <ProfileInactive height={size} width={size} />
+            <ProfileInactive height={size*1.4} width={size*1.4} />
           }
         }
       })}

@@ -2,13 +2,16 @@ import { StyleSheet, Dimensions } from "react-native";
 import Constants from "expo-constants";
 import bubbleColors from '../../../utils/bubbleColors';
 
+const statusBarHeight = Constants.statusBarHeight
+
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: bubbleColors.purple
+    backgroundColor: bubbleColors.purple,
+    marginTop: statusBarHeight,
   },
   post: {
     height: screenHeight-64

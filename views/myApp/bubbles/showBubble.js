@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Statusbar from '../statusbar';
 import bubbleColors from '../../../utils/bubbleColors';
+
+import Constants from 'expo-constants';
+const statusBarHeight = Constants.statusBarHeight
 
 const MONTHS = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -127,7 +129,6 @@ export default class ShowBubble extends Component {
 
     return(
       <View style={styles.container}>
-        <Statusbar />
         <View style={type === 'profile' ? styles.profileNavbar : styles.navbar}>
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
             <View style={type === 'profile' ? styles.profileBack : styles.back}>
@@ -209,6 +210,7 @@ const styles = StyleSheet.create({
   container: {
     minHeight: '100%',
     maxWidth: '100%',
+    marginTop: statusBarHeight,
   },
   navbar: {
     width: '100%',

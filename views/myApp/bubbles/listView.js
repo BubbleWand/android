@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Keyboard, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Statusbar from '../statusbar';
+
+import Constants from 'expo-constants';
+const statusBarHeight = Constants.statusBarHeight
 
 import InnerTree from '../../../utils/Tree';
 import { FlatList } from 'react-native-gesture-handler';
@@ -96,25 +98,25 @@ export default class ListView extends Component {
     const { raw } = this.state;
     let data;
     if (search === "") {
-      for (let item of raw) {
-        data = [...data, ...item]
-      }
+      console.log('in here')
+      data = RAW
     } else {
+      data = []
       search = search.toLowerCase();
       const tri = new InnerTree(Object.keys(raw));
       const s = tri.complete(search)
-      data = s.map((item, index) => {
-        return raw[item]
-      })
+      for (let item of s) {
+        data = data.concat(raw[item])
+      }
     }
     this.setState({data})
   }
 
   render() {
     const { showSearch, data } = this.state;
+    console.log('--------', data)
     return(
       <View style={styles.view}>
-        <Statusbar />
         <View style={styles.header}>
           <Icon style={styles.icon} name="search" size={25} color="white" onPress={() => {
             this.setState(prevState => ({
@@ -188,6 +190,7 @@ const styles = StyleSheet.create({
     width: "100%",
     minHeight: 50,
     maxHeight: 50,
+    marginTop: statusBarHeight,
     backgroundColor: bubbleColors.purple,
     flex: 1,
     flexDirection: 'row',
@@ -216,7 +219,7 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: 10,
     marginRight: 10,
-    minHeight: '100%',
+    minHeight: '90%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
