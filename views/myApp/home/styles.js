@@ -30,6 +30,12 @@ const styles = StyleSheet.create({
   postHeaderTime: {
     color: "white"
   },
+  textShadow: {
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 7,
+    padding: 2
+  },
   postFile: {
     minWidth: screenWidth,
     height: screenHeight-64

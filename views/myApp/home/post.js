@@ -8,9 +8,9 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 export default function Post({ author, createdAt, files, likes, comments }) {
   return (
     <View style={ styles.post }>
-      <View style={ styles.postHeader }>
-        <Text style={ styles.postHeaderUsername }>{author.username}</Text>
-        <Moment style={styles.postHeaderTime} element={Text} fromNow>
+      <View style={[ styles.postHeader, styles.textShadow ]}>
+        <Text style={[ styles.postHeaderUsername, styles.textShadow ]}>{author.username}</Text>
+        <Moment style={[ styles.postHeaderTime, styles.textShadow ]} element={Text} fromNow>
           { createdAt }
         </Moment>
       </View>
