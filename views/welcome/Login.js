@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Text, View, Button, ScrollView, TextInput, StyleSheet, Keyboard, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
+import {  Text, View, Button, ScrollView, TextInput, StyleSheet, Keyboard, TouchableOpacity, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { BubbleLogo } from '../../assets';
 
@@ -20,8 +20,7 @@ export default class Login extends Component {
   render() {
     const { logIn } = this.props.route.params
     return (
-
-      
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={{height: '100%', width: '100%'}}>
           <View style={styles.view}>
             <TouchableOpacity style={styles.backButton}
             onPress={() => this.props.navigation.goBack()}>
@@ -54,6 +53,7 @@ export default class Login extends Component {
              >Log In</Text>
           </TouchableOpacity>
         </View>
+      </TouchableWithoutFeedback>
     )
   }
 }

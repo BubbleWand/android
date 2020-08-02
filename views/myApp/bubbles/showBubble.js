@@ -133,7 +133,7 @@ export default class ShowBubble extends Component {
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
             <View style={type === 'profile' ? styles.profileBack : styles.back}>
               <Icon name="arrow-left" size={25} color="white" />
-              <Text style={styles.backText}></Text>
+              <Text style={styles.backText}>Back</Text>
             </View>
           </TouchableWithoutFeedback>
           <Icon name="cog" size={25} color="white" style={isOwner ? styles.setting : {display: "none"}} 
@@ -152,7 +152,7 @@ export default class ShowBubble extends Component {
               }}
             />
             <Text ellipsizeMode="tail" numberOfLines={1} style={styles.name}>{data.name}</Text>
-            <Text ellipsizeMode="tail" numberOfLines={1} style={styles.points}>{data.points}</Text>
+            <Text ellipsizeMode="tail" numberOfLines={1} style={styles.points}>{data.points.toLocaleString()}</Text>
           </View>
           <View style={styles.right}>
             {type === 'bubble' ? 
@@ -167,7 +167,7 @@ export default class ShowBubble extends Component {
               </View>
               <View style={styles.infoField}>
                 <Icon name="calendar-day" size={15} color={bubbleColors.purple} />
-                <Text style={styles.infoText}>Bubbled {MONTHS[data.createdAt.getMonth()]}, {1900 + data.createdAt.getYear()}</Text>
+                <Text style={styles.infoText}>{MONTHS[data.createdAt.getMonth()]}, {1900 + data.createdAt.getYear()}</Text>
               </View>
             </View>
             <Text style={styles.about} ellipsizeMode="tail" numberOfLines={4}>

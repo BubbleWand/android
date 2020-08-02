@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Text, View, Button, ScrollView, TextInput, StyleSheet, Keyboard, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
+import {  Text, View, Button, ScrollView, TextInput, StyleSheet, Keyboard, TouchableOpacity, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { BubbleLogo } from '../../assets';
 import DatePicker from 'react-native-datepicker'
@@ -32,8 +32,8 @@ export default class SignUp extends Component {
     // console.log(date)
     return (
 
-        
-          <View style={styles.view} onPress= {()=> Keyboard.dismiss()}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={{height: '100%', width: '100%'}}>
+          <View style={styles.view}>
             <TouchableOpacity style={styles.backButton}
             onPress={() => {
               isFirst ? 
@@ -125,17 +125,7 @@ export default class SignUp extends Component {
                 value={this.state.password}
                 onChangeText={(password) => this.setState({password})}
               />
-                <TextInput
-                secureTextEntry={true}
-                style={styles.input}
-                placeholder="ghghg"
-                placeholderTextColor="#84817a"
-                selectionColor='blue'
-                onBlur={Keyboard.dismiss}
-                value={this.state.password}
-                onChangeText={(password) => this.setState({password})}
-              />
-              {/* <TextInput
+              <TextInput
                 keyboardType={'default'}
                 secureTextEntry={true}
                 style={styles.input}
@@ -145,7 +135,7 @@ export default class SignUp extends Component {
                 onBlur={Keyboard.dismiss}
                 value={this.state.confirmPassword}
                 onChangeText={(confirmPassword) => this.setState({confirmPassword})}
-              /> */}
+              />
 
               <Text style={styles.legalText}>By signing up, you agree to the Terms of Service and Privacy Policy.</Text>
               <TouchableOpacity style={styles.logInButton}
@@ -158,6 +148,7 @@ export default class SignUp extends Component {
             </View>
             }
         </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
