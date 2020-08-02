@@ -34,7 +34,9 @@ export default class App extends Component {
               logIn: logIn,
             }}/>
             :
-            <Stack.Screen name="MyApp" component={MyApp} />
+            <Stack.Screen name="MyApp" component={MyApp} initialParams={{
+              logIn: logIn,
+            }} />
             }
           </Stack.Navigator>
       </NavigationContainer>

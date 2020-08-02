@@ -133,7 +133,7 @@ export default class ShowBubble extends Component {
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
             <View style={type === 'profile' ? styles.profileBack : styles.back}>
               <Icon name="arrow-left" size={25} color="white" />
-              <Text style={styles.backText}>Back</Text>
+              <Text style={styles.backText}></Text>
             </View>
           </TouchableWithoutFeedback>
           <Icon name="cog" size={25} color="white" style={isOwner ? styles.setting : {display: "none"}} 

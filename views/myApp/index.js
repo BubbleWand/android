@@ -32,7 +32,8 @@ function dummy() {
     </View>
   )
 }
-export default function MyApp() {
+export default function MyApp(props) {
+  const {logIn} = props.route.params
   return (
     <Tabs.Navigator 
       screenOptions={({ route }) => ({
@@ -76,7 +77,9 @@ export default function MyApp() {
       <Tabs.Screen name="Bubbles" component={Bubble} />
       <Tabs.Screen name="Add" component={Add} />
       <Tabs.Screen name="Map" component={Map} />
-      <Tabs.Screen name="Profile" component={Profile} />
+      <Tabs.Screen name="Profile" component={Profile} initialParams={{
+        logIn: logIn,
+      }} />
     </Tabs.Navigator>
   )
 };

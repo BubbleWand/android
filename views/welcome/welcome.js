@@ -9,7 +9,8 @@ import Constants from 'expo-constants';
 const statusBarHeight = Constants.statusBarHeight
  
 import Login from './Login'
- 
+import SignUp from './SignUp'
+import EasterEgg from './Egg'
 const WelcomeStack = createStackNavigator();
  
 export default function Welcome( props ) {
@@ -27,8 +28,8 @@ export default function Welcome( props ) {
      >
      <WelcomeStack.Screen name="Home" component={WelcomeScreen} options={{ headerShown: false }} />
      <WelcomeStack.Screen
-       name="Signup"
-       component={Login}
+       name="SignUp"
+       component={SignUp}
        initialParams={{
          logIn: logIn,
        }}
@@ -42,6 +43,12 @@ export default function Welcome( props ) {
        initialParams={{
          logIn: logIn ,
        }}/>
+    <WelcomeStack.Screen
+      name="Egg"
+      component={EasterEgg}
+      options={{
+        headerShown: false
+      }}/>
    </WelcomeStack.Navigator>
  )
 }
@@ -59,13 +66,20 @@ function WelcomeScreen({ navigation}) {
            height: '94%',
          }}
        />
-     <BubbleLogo style={styles.welcomeLogo} height={"75%"} width={"75%"}></BubbleLogo>
+      <View style={styles.welcomeLogo}>
+       <BubbleLogo 
+       onPress={() => {
+        navigation.navigate('Egg')
+      }}
+        height={"75%"} width={"75%"}></BubbleLogo>
+     </View>
+     
      <Text style={styles.welcomeText}>Have fun</Text>
      <Text style={styles.welcomeText}>with your friends.</Text>
      <Text style={styles.welcomeText}>We'll take care of the rest. </Text>
      <TouchableOpacity style={styles.signUpButton}
      onPress={() => {
-       navigation.navigate('Login')
+       navigation.navigate('SignUp')
      }}>
        <Text style={styles.signUpText}
        >Create an Account</Text>
@@ -123,7 +137,8 @@ const styles = StyleSheet.create({
    color:'white',
  },
  welcomeLogo: {
-   bottom:"9%",
+   width: "100%",
+   alignItems: 'center'
  },
  loginText: {
    color:'#7D5FFF',
@@ -138,9 +153,7 @@ const styles = StyleSheet.create({
    justifyContent: "center",
    alignItems: "center",
    paddingTop:15,
-   borderTopWidth: 0.5,
-   borderStyle:'solid',
-   borderColor:'black',
+
  },
  signUpButton: {
    bottom:"15%",

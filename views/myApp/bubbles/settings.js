@@ -20,7 +20,7 @@ export default class Settings extends Component {
           <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}} >
             <View style={styles.back}>
               <Icon name="arrow-left" size={25} color="white" />
-              <Text style={styles.backText}>Back</Text>
+              <Text style={styles.backText}></Text>
             </View>
           </TouchableWithoutFeedback>
         </View>
